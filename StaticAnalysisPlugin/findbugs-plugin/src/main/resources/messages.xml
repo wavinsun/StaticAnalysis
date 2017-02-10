@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://findsecbugs.h3xstream.com/messagecollection.xsd">
+
+    <Plugin>
+        <ShortDescription>Find Static Bugs</ShortDescription>
+        <Details>Find Static Bugs is a plugin that aims to help static audit.</Details>
+        <BugsUrl>http://findbugs.sourceforge.net</BugsUrl>
+        <AllBugsUrl>http://findbugs.sourceforge.net</AllBugsUrl>
+    </Plugin>
+
+    <BugCategory category="STATIC_ANALYSIS">
+        <Description>STATIC_ANALYSIS</Description>
+        <Abbreviation>SC</Abbreviation>
+        <Details>Static Analysis</Details>
+    </BugCategory>
+
+    <Detector class="cn.mutils.app.staticanalysis.findbugs.SystemGCDetector">
+        <Details>Detect the use of System GC.
+        </Details>
+    </Detector>
+
+    <BugPattern type="SYSTEM_GC">
+        <ShortDescription>SYSTEM_GC</ShortDescription>
+        <LongDescription>SYSTEM_GC</LongDescription>
+        <Details>
+            <![CDATA[
+            SYSTEM_GC
+            ]]>
+        </Details>
+    </BugPattern>
+
+    <BugCode abbrev="SYSGC">SYSTEM_GC</BugCode>
+
+</MessageCollection>

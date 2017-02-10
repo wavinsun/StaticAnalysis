@@ -1,0 +1,3 @@
+-20 BugPattern SYSTEM_GC
+
+-20 Category STATIC_ANALYSIS

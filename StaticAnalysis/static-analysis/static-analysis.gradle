@@ -1,0 +1,88 @@
+subprojects { project ->
+
+  apply plugin: 'checkstyle'
+
+  checkstyle {
+    toolVersion '7.0'
+  }
+
+  task checkstyle(type: Checkstyle) {
+    group "Verification"
+
+    configFile rootProject.file('static-analysis/checkstyle/checkstyle.xml')
+    source 'src'
+    include '**/*.java'
+    ignoreFailures true // if false it will not go on when error
+    showViolations true
+
+    classpath = files()
+
+    reports {
+      xml.enabled = true
+      html.enabled true
+    }
+  }
+
+  apply plugin: 'findbugs'
+
+  dependencies {
+    findbugs 'com.google.code.findbugs:findbugs:3.0.1'
+    findbugs configurations.findbugsPlugins.dependencies
+
+    // Here we specify the findbugsPlugins
+    //findbugsPlugins 'cn.mutils.app.staticanalysis:findbugs-plugin:1.0.0'
+    findbugsPlugins files(rootProject.file('static-analysis/findbugs/findbugs-plugin.jar').absolutePath)
+  }
+
+  /*
+  findbugs {
+    toolVersion '3.0.1'
+  }
+  */
+
+  task findbugs(type: FindBugs, dependsOn: 'assemble') {
+    group "Verification"
+
+    excludeFilter = rootProject.file('static-analysis/findbugs/findbugs-filter.xml')
+    classpath = files()
+    pluginClasspath = project.configurations.findbugsPlugins
+    classes = files(project.file('build/intermediates/classes'))
+    source = fileTree('src/main/java/')
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "high"
+
+    classpath = files()
+
+    reports {
+      xml.enabled = true
+      html.enabled = false
+    }
+  }
+
+  apply plugin: 'pmd'
+
+  pmd {
+    toolVersion '5.5.1'
+  }
+
+  task pmd(type: Pmd) {
+    group 'verification'
+
+    ruleSetFiles = rootProject.files('static-analysis/pmd/pmd-ruleset.xml')
+    source = fileTree('src/main/java/')
+    ignoreFailures = true
+
+    reports {
+      xml.enabled = true
+      html.enabled = true
+    }
+  }
+
+  afterEvaluate {
+    check.dependsOn('checkstyle')
+    check.dependsOn('findbugs')
+    check.dependsOn('pmd')
+  }
+
+}

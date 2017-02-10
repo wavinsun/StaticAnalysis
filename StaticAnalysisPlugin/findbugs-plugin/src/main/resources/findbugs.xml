@@ -1,0 +1,16 @@
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="https://findbugs.googlecode.com/svn-history/r13379/trunk/findbugs/etc/findbugsplugin.xsd"
+                pluginid="cn.mutils.app.staticanalysis.findbugs"
+                provider="Find Static Bugs"
+                defaultenabled="true"
+                website="http://findbugs.sourceforge.net">
+
+    <EngineRegistrar class="edu.umd.cs.findbugs.classfile.engine.EngineRegistrar"/>
+
+    <BugCategory category="STATIC_ANALYSIS" hidden="false"/>
+
+    <Detector class="cn.mutils.app.staticanalysis.findbugs.SystemGCDetector" reports="SYSTEM_GC" speed="fast" hidden="false" disabled="false"/>
+
+    <BugPattern type="SYSTEM_GC" abbrev="SYSGC" category="STATIC_ANALYSIS"/>
+
+</FindbugsPlugin>
