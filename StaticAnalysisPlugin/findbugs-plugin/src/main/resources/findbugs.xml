@@ -10,7 +10,9 @@
     <BugCategory category="STATIC_ANALYSIS" hidden="false"/>
 
     <Detector class="cn.mutils.app.staticanalysis.findbugs.SystemGCDetector" reports="SYSTEM_GC" speed="fast" hidden="false" disabled="false"/>
+    <Detector class="cn.mutils.app.staticanalysis.findbugs.DeprecatedDetector" reports="DEPRECATED" speed="fast" hidden="false" disabled="false"/>
 
     <BugPattern type="SYSTEM_GC" abbrev="SYSGC" category="STATIC_ANALYSIS"/>
+    <BugPattern type="DEPRECATED" abbrev="DEPRECATED" category="STATIC_ANALYSIS"/>
 
 </FindbugsPlugin>

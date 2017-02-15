@@ -19,17 +19,31 @@
         <Details>Detect the use of System GC.
         </Details>
     </Detector>
+    <Detector class="cn.mutils.app.staticanalysis.findbugs.DeprecatedDetector">
+        <Details>Detect the use of Deprecated
+        </Details>
+    </Detector>
 
     <BugPattern type="SYSTEM_GC">
         <ShortDescription>SYSTEM_GC</ShortDescription>
         <LongDescription>SYSTEM_GC</LongDescription>
         <Details>
             <![CDATA[
-            SYSTEM_GC
+            Your code has called System.gc().
+            ]]>
+        </Details>
+    </BugPattern>
+    <BugPattern type="DEPRECATED">
+        <ShortDescription>Deprecated API</ShortDescription>
+        <LongDescription>Deprecated API</LongDescription>
+        <Details>
+            <![CDATA[
+            Your code has called deprecated API.
             ]]>
         </Details>
     </BugPattern>
 
     <BugCode abbrev="SYSGC">SYSTEM_GC</BugCode>
+    <BugCode abbrev="DEPRECATED">DEPRECATED</BugCode>
 
 </MessageCollection>
