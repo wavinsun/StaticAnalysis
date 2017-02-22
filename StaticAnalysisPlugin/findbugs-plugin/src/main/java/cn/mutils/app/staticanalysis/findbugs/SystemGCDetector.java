@@ -7,6 +7,8 @@ import edu.umd.cs.findbugs.BugReporter;
  */
 public class SystemGCDetector extends AbstractBaseDetector {
 
+    public static final String BUG_TYPE_SYSTEM_GC = "SYSTEM_GC";
+
     public SystemGCDetector(BugReporter reporter) {
         super(reporter);
     }
@@ -16,7 +18,7 @@ public class SystemGCDetector extends AbstractBaseDetector {
         if (seen == INVOKESTATIC) {
             if ("java/lang/System".equals(getClassConstantOperand())) {
                 if ("gc".equals(getNameConstantOperand())) {
-                    reportBug("SYSTEM_GC", HIGH_PRIORITY);
+                    reportBug(BUG_TYPE_SYSTEM_GC, HIGH_PRIORITY);
                 }
             }
         }

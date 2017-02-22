@@ -11,6 +11,8 @@ import edu.umd.cs.findbugs.classfile.ClassDescriptor;
  */
 public class DeprecatedDetector extends AbstractBaseDetector {
 
+    public static final String BUG_TYPE_DEPRECATED = "DEPRECATED";
+
     public DeprecatedDetector(BugReporter reporter) {
         super(reporter);
     }
@@ -31,13 +33,13 @@ public class DeprecatedDetector extends AbstractBaseDetector {
         }
         ClassDescriptor deprecated = ClassDescriptor.createClassDescriptor("java/lang/Deprecated");
         if (operandClass.getAnnotation(deprecated) != null) {
-            reportBug("DEPRECATED", HIGH_PRIORITY);
+            reportBug(BUG_TYPE_DEPRECATED, operandClassDes.toDottedClassName());
             return;
         }
         XField operandField = getXFieldOperand();
         if (operandField != null) {
             if (operandField.getAnnotation(deprecated) != null) {
-                reportBug("DEPRECATED", HIGH_PRIORITY);
+                reportBug(BUG_TYPE_DEPRECATED, operandField.getClassName() + "#" + operandField.getName());
                 return;
             }
         }
@@ -45,7 +47,7 @@ public class DeprecatedDetector extends AbstractBaseDetector {
             XMethod operandMethod = getXMethodOperand();
             if (operandMethod != null) {
                 if (operandMethod.getAnnotation(deprecated) != null) {
-                    reportBug("DEPRECATED", HIGH_PRIORITY);
+                    reportBug(BUG_TYPE_DEPRECATED, operandMethod.getClassName() + "#" + operandMethod.getName() + "()");
                     return;
                 }
             }

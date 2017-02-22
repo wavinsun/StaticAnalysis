@@ -25,8 +25,8 @@
     </Detector>
 
     <BugPattern type="SYSTEM_GC">
-        <ShortDescription>SYSTEM_GC</ShortDescription>
-        <LongDescription>SYSTEM_GC</LongDescription>
+        <ShortDescription>System.gc()</ShortDescription>
+        <LongDescription>System.gc()</LongDescription>
         <Details>
             <![CDATA[
             Your code has called System.gc().
@@ -35,7 +35,7 @@
     </BugPattern>
     <BugPattern type="DEPRECATED">
         <ShortDescription>Deprecated API</ShortDescription>
-        <LongDescription>Deprecated API</LongDescription>
+        <LongDescription>Deprecated API: {3}</LongDescription>
         <Details>
             <![CDATA[
             Your code has called deprecated API.
