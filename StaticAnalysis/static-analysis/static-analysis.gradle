@@ -45,6 +45,7 @@ subprojects { project ->
 
     excludeFilter = rootProject.file('static-analysis/findbugs/findbugs-filter.xml')
     classpath = files()
+    //classpath = variant.javaCompile.classpath.plus(project.files(android.bootClasspath))
     pluginClasspath = project.configurations.findbugsPlugins
     classes = files(project.file('build/intermediates/classes'))
     source = fileTree('src/main/java/')
