@@ -1,4 +1,5 @@
 20 BugPattern SYSTEM_GC
 20 BugPattern DEPRECATED
+20 BugPattern FB_EXT
 
 20 Category STATIC_ANALYSIS

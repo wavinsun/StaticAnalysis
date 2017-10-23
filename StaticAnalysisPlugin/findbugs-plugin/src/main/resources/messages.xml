@@ -23,6 +23,10 @@
         <Details>Detect the use of Deprecated
         </Details>
     </Detector>
+    <Detector class="cn.mutils.app.staticanalysis.findbugs.FindbugsExtDetector">
+        <Details>Detect the ext bugs.
+        </Details>
+    </Detector>
 
     <BugPattern type="SYSTEM_GC">
         <ShortDescription>System.gc()</ShortDescription>
@@ -42,8 +46,18 @@
             ]]>
         </Details>
     </BugPattern>
+    <BugPattern type="FB_EXT">
+        <ShortDescription>Findbugs ext</ShortDescription>
+        <LongDescription>Findbugs ext</LongDescription>
+        <Details>
+            <![CDATA[
+            Your code has called class or method in findbugs_ext.ini.
+            ]]>
+        </Details>
+    </BugPattern>
 
     <BugCode abbrev="SYSGC">SYSTEM_GC</BugCode>
     <BugCode abbrev="DEPRECATED">DEPRECATED</BugCode>
+    <BugCode abbrev="FB_EXT">FB_EXT</BugCode>
 
 </MessageCollection>
